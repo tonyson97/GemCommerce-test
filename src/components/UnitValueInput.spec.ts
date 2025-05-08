@@ -33,8 +33,10 @@ describe('UnitValueInput', () => {
     // Nhập -5
     await input.setValue('-5')
     await input.trigger('blur')
-    // Cập nhật lại prop modelValue để đồng bộ với displayValue
-    await wrapper.setProps({ value: 0 })
+    // Simulate v-model update from parent
+    const stepper = wrapper.findComponent({ name: 'ValueStepper' })
+    stepper.vm.$emit('update:modelValue', 0)
+    await wrapper.vm.$nextTick()
     // Giá trị phải về 0
     expect(input.element.value).toBe('0')
   })
