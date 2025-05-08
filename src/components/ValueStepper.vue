@@ -247,4 +247,25 @@ function removeFocus(_e: MouseEvent) {
   outline: none !important;
   box-shadow: none !important;
 }
+@media (max-width: 600px) {
+  .value-stepper {
+    height: 40px;
+    padding: 0 2px;
+  }
+  .value-stepper button {
+    width: 32px;
+    height: 40px;
+    font-size: 18px;
+  }
+  .value-stepper input {
+    width: 48px;
+    font-size: 16px;
+    padding: 4px 0;
+  }
+  .error-tooltip {
+    font-size: 12px;
+    padding: 4px 8px;
+    bottom: -32px;
+  }
+}
 </style>

@@ -60,4 +60,10 @@ defineEmits<{
   outline: none !important;
   box-shadow: none !important;
 }
+@media (max-width: 600px) {
+  .unit-switch button {
+    font-size: 15px;
+    padding: 8px 0;
+  }
+}
 </style> 

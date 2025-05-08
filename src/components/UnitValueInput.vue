@@ -76,4 +76,24 @@ watch(unit, (newUnit) => {
   display: flex;
   align-items: center;
 }
+
+@media (max-width: 600px) {
+  .unit-value-block {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 8px 12px 8px;
+    margin: 16px 0;
+    box-sizing: border-box;
+  }
+  .unit-value-line {
+    gap: 8px;
+    min-height: 40px;
+  }
+  .unit-label {
+    font-size: 13px;
+    width: 48px;
+    line-height: 40px;
+    height: 40px;
+  }
+}
 </style> 
