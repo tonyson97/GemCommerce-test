@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest'
 import ValueStepper from './ValueStepper.vue'
 
 describe('ValueStepper', () => {
@@ -10,11 +11,11 @@ describe('ValueStepper', () => {
     const buttons = wrapper.findAll('.value-stepper button')
     // Click nút +
     await buttons[1].trigger('click')
-    expect(wrapper.emitted()['update:modelValue'][0][0]).toBe(2)
+    expect((wrapper.emitted()['update:modelValue'] as any[][])[0][0]).toBe(2)
     await wrapper.setProps({ modelValue: 2 })
     // Click nút -
     await buttons[0].trigger('click')
-    expect(wrapper.emitted()['update:modelValue'][1][0]).toBe(1)
+    expect((wrapper.emitted()['update:modelValue'] as any[][])[1][0]).toBe(1)
   })
 
   it('disables decrement at 0', () => {
@@ -47,13 +48,13 @@ describe('ValueStepper', () => {
     await input.setValue('12,3')
     await input.trigger('input')
     await new Promise(r => setTimeout(r, 350))
-    expect(wrapper.emitted()['update:modelValue'][0][0]).toBe(12.3)
+    expect((wrapper.emitted()['update:modelValue'] as any[][])[0][0]).toBe(12.3)
     await wrapper.setProps({ modelValue: 12.3 })
     // Nhập 123a -> phải chuyển thành 123
     await input.setValue('123a')
     await input.trigger('input')
     await new Promise(r => setTimeout(r, 350))
-    expect(wrapper.emitted()['update:modelValue'][1][0]).toBe(123)
+    expect((wrapper.emitted()['update:modelValue'] as any[][])[1][0]).toBe(123)
     await wrapper.setProps({ modelValue: 123 })
     // Nhập a123 -> phải chuyển thành 100 (trigger blur để cập nhật)
     await input.setValue('a123')
@@ -71,7 +72,7 @@ describe('ValueStepper', () => {
     await input.setValue('1.2.3')
     await input.trigger('input')
     await new Promise(r => setTimeout(r, 350))
-    expect(wrapper.emitted()['update:modelValue'][4][0]).toBe(1.23)
+    expect((wrapper.emitted()['update:modelValue'] as any[][])[4][0]).toBe(1.23)
   })
 
   it('input < 0 blur về 0', async () => {

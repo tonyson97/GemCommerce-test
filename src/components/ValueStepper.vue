@@ -92,15 +92,6 @@ function sanitizeInput(val: string): string {
   return sanitized;
 }
 
-function showError(msg: string) {
-  errorMsg.value = msg;
-  shake.value = true;
-  setTimeout(() => {
-    shake.value = false;
-    errorMsg.value = '';
-  }, 1000);
-}
-
 function onInput(e: Event) {
   let val = (e.target as HTMLInputElement).value;
   const sanitized = sanitizeInput(val);
@@ -153,7 +144,7 @@ function decrement() {
   }
 }
 
-function removeFocus(e: MouseEvent) {
+function removeFocus(_e: MouseEvent) {
   if (document.activeElement instanceof HTMLElement) {
     document.activeElement.blur();
   }
